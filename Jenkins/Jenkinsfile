@@ -1,4 +1,4 @@
-//@Library('jenkins-shared-library') _
+@Library('jenkins-shared-library') _
 
 pipeline {
     agent { label 'agent-ec2' }
@@ -8,98 +8,66 @@ pipeline {
         IMAGE_TAG = "v${BUILD_ID}"
         FULL_IMAGE = "${DOCKER_IMAGE}:${IMAGE_TAG}"
         DEPLOYMENT_FILE = 'deployment.yaml'
-        GIT_CREDENTIALS_ID = 'github' 
+        GIT_CREDENTIALS_ID = 'github'
+        APP_REPO = 'https://github.com/Sherif127/CloudDevOpsProject'
+        MANIFESTS_REPO = 'github.com/Sherif127/kubernetes-manifests.git'
+        DOCKER_CONTEXT = 'Docker/App'
     }
 
     stages {
-
         stage('Checkout App Repo') {
             steps {
-                // Clone application source code
-                git branch: 'main',
-                    credentialsId: "${GIT_CREDENTIALS_ID}",
-                    url: 'https://github.com/Sherif127/CloudDevOpsProject'
+                checkoutAppRepo(env.APP_REPO, 'main', env.GIT_CREDENTIALS_ID)
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                // Build image from Dockerfile inside Docker/ folder
-                dir('Docker/App') {
-                    sh "docker build -t ${FULL_IMAGE} ."
-                }
+                buildDockerImage(env.FULL_IMAGE, env.DOCKER_CONTEXT)
             }
         }
 
         stage('Scan Docker Image') {
             steps {
-                script {
-                    def reportName = "trivy-${IMAGE_TAG}.json"
-                    // Scan the image with Trivy
-                    sh "trivy image -f json -o ${reportName} ${FULL_IMAGE}"
-                    archiveArtifacts artifacts: reportName, fingerprint: true
-                }
+                scanDockerImage(env.FULL_IMAGE, env.IMAGE_TAG)
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                // Push image to Docker Hub using credentials
-                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh """
-                        echo "${PASS}" | docker login -u "${USER}" --password-stdin
-                        docker push ${FULL_IMAGE}
-                    """
-                }
+                pushDockerImage(env.FULL_IMAGE)
             }
         }
 
         stage('Delete Local Image') {
             steps {
-                // Remove local image (ignore error if already deleted)
-                sh "docker rmi ${FULL_IMAGE} || true"
+                deleteLocalImage(env.FULL_IMAGE)
             }
         }
 
         stage('Update Kubernetes Manifests') {
             steps {
-                // Clone the manifests repo, update the image in deployment.yaml
-                withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
-                    sh """
-                        rm -rf manifests-repo
-                        git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/Sherif127/kubernetes-manifests.git manifests-repo
-                        sed -i 's|image: .*|image: ${FULL_IMAGE}|' manifests-repo/${DEPLOYMENT_FILE}
-                    """
-                }
+                updateManifestsRepo(env.MANIFESTS_REPO, env.GIT_CREDENTIALS_ID, env.DEPLOYMENT_FILE, env.FULL_IMAGE)
             }
         }
 
         stage('Push Kubernetes Manifests') {
             steps {
-                dir('manifests-repo') {
-                    withCredentials([usernamePassword(credentialsId: "${GIT_CREDENTIALS_ID}", usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
-                        sh """
-                            git config user.name "Jenkins CI"
-                            git config user.email "jenkins@example.com"
-                            git add ${DEPLOYMENT_FILE}
-                            git commit -m "Update image to ${FULL_IMAGE}" || echo "No changes to commit"
-                            git push https://${GIT_USER}:${GIT_TOKEN}@github.com/Sherif127/kubernetes-manifests.git
-                        """
-                    }
-                }
+                pushManifestsRepo(env.MANIFESTS_REPO, env.GIT_CREDENTIALS_ID, env.DEPLOYMENT_FILE)
             }
         }
     }
 
     post {
         always {
-            echo '✅ Pipeline finished!'
+            sh "rm -rf manifests-repo"
+            echo 'Pipeline finished!'
         }
         success {
-            echo '✅ Deployment successful!'
+            echo 'Deployment successful!'
         }
         failure {
-            echo '❌ Deployment failed!'
+            echo 'Deployment failed!'
         }
     }
 }
