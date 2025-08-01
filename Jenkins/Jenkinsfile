@@ -25,7 +25,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build image from Dockerfile inside Docker/ folder
-                dir('Docker') {
+                dir('Docker/App') {
                     sh "docker build -t ${FULL_IMAGE} ."
                 }
             }
