@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: leoughhh/ivolve-app:v1
+          image: leoughhh/ivolve-app:v3
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
           resources:
             limits:
               cpu: "500m"

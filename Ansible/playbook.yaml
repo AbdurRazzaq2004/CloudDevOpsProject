@@ -7,7 +7,6 @@
     - docker
     - java
     - trivy
-    #- aws_cli
     - jenkins_master
 
 - name: Setup Jenkins worker

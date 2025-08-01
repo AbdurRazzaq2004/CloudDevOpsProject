@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application files to the container
 COPY . .
 
-# Expose port 8080 so the app is accessible from outside the container
-EXPOSE 8080
+# Expose port 5000 so the app is accessible from outside the container
+EXPOSE 5000
 
 # Define the default command to run the Flask app
 CMD ["python", "app.py"]
