@@ -26,7 +26,19 @@ A comprehensive end-to-end CI/CD infrastructure for containerized applications. 
   - Two worker nodes (managed node group)
 ---
 
-### 2. 💻 Kubernetes Environment
+### 2. ⚙️ Configuration Management using Ansible
+- **Ansible Automation Highlights**:
+
+  - Dynamic Inventory using EC2 instance tags
+  - Role-Based Setup for modular, idempotent configuration
+  - Groovy Automation: Jenkins preconfigured with users, plugins, and UI (BlueOcean)
+  - Docker & Git installed across all nodes
+  - Trivy integrated for image vulnerability scanning
+  - SSH Key-based Communication: Enables secure master-agent linking
+
+---
+
+### 3. 💻 Kubernetes Environment
 
 - **EKS Cluster** (Managed by AWS):
   - 1 control plane (managed by AWS) + 2 worker nodes (managed-node)
@@ -35,7 +47,7 @@ A comprehensive end-to-end CI/CD infrastructure for containerized applications. 
 
 ---
 
-### 3. 🔁 ArgoCD (GitOps Deployment)
+### 4. 🔁 ArgoCD (GitOps Deployment)
 
 - **Core Components**:
   - **Application Controller**: Ensures app state matches Git
@@ -48,7 +60,7 @@ A comprehensive end-to-end CI/CD infrastructure for containerized applications. 
 
 ---
 
-### 4. ⚙️ CI/CD Pipeline Flow
+### 5. ⚙️ CI/CD Pipeline Flow
 
 1. **Code push** triggers webhook in GitHub
 2. **Jenkins Master** detects the change and schedules a job
