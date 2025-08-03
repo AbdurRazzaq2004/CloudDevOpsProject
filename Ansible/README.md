@@ -61,7 +61,7 @@ Check the dynamic inventory:
 ansible-inventory -i aws_ec2.yaml --graph
 ```
 
-[Inventory Graph Screenshot](https://github.com/user-attachments/assets/c3b3179a-2659-45e6-96ab-25950eac7c2e)
+![Inventory Graph Screenshot](https://github.com/user-attachments/assets/c3b3179a-2659-45e6-96ab-25950eac7c2e)
 
 Ping test:
 
@@ -69,7 +69,7 @@ Ping test:
 ansible all -m ping -i aws_ec2.yaml
 ```
 
-[Ping Output Screenshot](https://github.com/user-attachments/assets/ef218bf9-a380-4116-a5f1-4f3e08566f79)
+![Ping Output Screenshot](https://github.com/user-attachments/assets/ef218bf9-a380-4116-a5f1-4f3e08566f79)
 
 ---
 
@@ -94,7 +94,7 @@ http://<JENKINS_MASTER_PUBLIC_IP>:8080
 - Username: `sherif`  
 - Password: `123456`
 
-[Jenkins UI Screenshot](https://github.com/user-attachments/assets/80115c1c-0688-4016-899f-80cfcbf96e85)
+![Jenkins UI Screenshot](https://github.com/user-attachments/assets/80115c1c-0688-4016-899f-80cfcbf96e85)
 
 ---
 
@@ -109,14 +109,14 @@ http://<JENKINS_MASTER_PUBLIC_IP>:8080
 | jenkins_slave  | Configures SSH, sets up slave agent, Docker access             |
 | trivy          | Installs Trivy image scanner                                   |
 
-[Roles Overview Screenshot 1](https://github.com/user-attachments/assets/5352d66c-16b6-412e-a85c-66e1ea8decb3)  
-[Roles Overview Screenshot 2](https://github.com/user-attachments/assets/fff274fe-18c3-4b45-ba64-242f06dae6e4)  
-[Roles Overview Screenshot 3](https://github.com/user-attachments/assets/7365fb0d-faba-4418-a224-37f949fc2dd8)  
-[Roles Overview Screenshot 4](https://github.com/user-attachments/assets/811c9292-ce01-49c3-85a4-bc8423b64549)  
-[Roles Overview Screenshot 5](https://github.com/user-attachments/assets/a84b2dbb-4eab-4058-9b46-01a242cfb9cc)  
-[Roles Overview Screenshot 6](https://github.com/user-attachments/assets/a35d8561-ee7c-4105-8d79-2d02b258f2e2)  
-[Roles Overview Screenshot 7](https://github.com/user-attachments/assets/b9fa84e2-f051-4b24-a178-085eb92cdb6d)
-[All changes](https://github.com/user-attachments/assets/b0a87bdf-8e71-4fe8-8a47-654e090ea2c5)
+![Roles Overview Screenshot 1](https://github.com/user-attachments/assets/5352d66c-16b6-412e-a85c-66e1ea8decb3)  
+![Roles Overview Screenshot 2](https://github.com/user-attachments/assets/fff274fe-18c3-4b45-ba64-242f06dae6e4)  
+![Roles Overview Screenshot 3](https://github.com/user-attachments/assets/7365fb0d-faba-4418-a224-37f949fc2dd8)  
+![Roles Overview Screenshot 4](https://github.com/user-attachments/assets/811c9292-ce01-49c3-85a4-bc8423b64549)  
+![Roles Overview Screenshot 5](https://github.com/user-attachments/assets/a84b2dbb-4eab-4058-9b46-01a242cfb9cc)  
+![Roles Overview Screenshot 6](https://github.com/user-attachments/assets/a35d8561-ee7c-4105-8d79-2d02b258f2e2)  
+![Roles Overview Screenshot 7](https://github.com/user-attachments/assets/b9fa84e2-f051-4b24-a178-085eb92cdb6d)
+![All changes](https://github.com/user-attachments/assets/b0a87bdf-8e71-4fe8-8a47-654e090ea2c5)
 ---
 
 ## Jenkins Automation Highlights
