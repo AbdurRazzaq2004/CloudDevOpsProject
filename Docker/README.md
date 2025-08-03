@@ -65,7 +65,7 @@ The app renders a single webpage that highlights the collaboration between NTI a
 - Copy `requirements.txt` first to optimize Docker layer caching  
 - Install dependencies via `pip install`  
 - Copy remaining app files  
-- Expose **port 8080** inside the container  
+- Expose **port 5000** inside the container  
 - App still runs on **port 5000**, so proper mapping is needed
 
 ---
@@ -78,30 +78,35 @@ docker build -t ivolve-app .
 ```
 
 ### 🔧 Docker Build Process
-![Docker Build]<img width="1533" height="727" alt="Image" src="https://github.com/user-attachments/assets/ecd234a8-d6a9-4774-ae35-e9225c2dfaf6" />
+<img width="1533" height="727" alt="Image" src="https://github.com/user-attachments/assets/ecd234a8-d6a9-4774-ae35-e9225c2dfaf6" />
 
 ### 📦 Docker Images List
-![Docker Images]<img width="819" height="75" alt="Image" src="https://github.com/user-attachments/assets/da7a1a35-7ebd-4acf-89b5-16a9cff1011b" />
+<img width="819" height="75" alt="Image" src="https://github.com/user-attachments/assets/da7a1a35-7ebd-4acf-89b5-16a9cff1011b" />
+
+### 📤 Login & Push to Docker Hub
+```bash
+docker login -u <username>
+docker push <username>/<image_name>
+```
+
+### ☁️ Docker Hub Image
+<img width="1571" height="835" alt="Image" src="https://github.com/user-attachments/assets/5034bca1-60fc-4895-9b26-a506ad166e51" />
 
 ### 🚀 Run the Docker Container
 ```bash
 docker run -p 8080:5000 ivolve-app
-```
+```   
 
 ### 🚀 Docker Run Command
-![Docker Run]<img width="1262" height="291" alt="Image" src="https://github.com/user-attachments/assets/adf8c0d7-345e-4fe2-844e-8a9b63cb0952" />
+<img width="1262" height="291" alt="Image" src="https://github.com/user-attachments/assets/adf8c0d7-345e-4fe2-844e-8a9b63cb0952" />
 
 Then access the app at:
 
 - ➡️ http://localhost:8080  
 - Or, on EC2:  
-  ➡️ http://<your-ec2-ip>:8080 *(Ensure port 8080 is open in the security group)*
-
-### ☁️ Docker Hub Image
-![Docker Hub Image]<img width="1571" height="835" alt="Image" src="https://github.com/user-attachments/assets/5034bca1-60fc-4895-9b26-a506ad166e51" />
+  ➡️ http://your-ec2-ip:8080 *(Ensure port 8080 is open in the security group)*
 
 ### 🌐 Web Application Page
-![Web Page]<img width="1920" height="1029" alt="Image" src="https://github.com/user-attachments/assets/9c274c48-cfe9-4be0-a9d2-80ab59bd92ad" />
+<img width="1920" height="1029" alt="Image" src="https://github.com/user-attachments/assets/9c274c48-cfe9-4be0-a9d2-80ab59bd92ad" />
 
 ---
-

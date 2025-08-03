@@ -49,10 +49,6 @@ resource "aws_instance" "jenkins_master" {
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  #metadata_options {
-  #http_tokens   = "optional"
-  #http_endpoint = "enabled"
-  #}
   root_block_device {
     volume_size = 10
     volume_type = "gp2"
@@ -70,11 +66,6 @@ resource "aws_instance" "jenkins_worker" {
   vpc_security_group_ids      = [aws_security_group.app.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
-
-  #metadata_options {
-  #http_tokens   = "optional"
-  #http_endpoint = "enabled"
-  #}
 
   root_block_device {
     volume_size = 10

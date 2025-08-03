@@ -6,7 +6,6 @@
     - git
     - docker
     - java
-    - trivy
     - jenkins_master
 
 - name: Setup Jenkins worker
