@@ -14,9 +14,3 @@ Ansible/jenkins-key.pem
 
 # Public keys 
 Ansible/jenkins-key.pub
-
-assets/
-assets
-
-.vscode/
-.vscode

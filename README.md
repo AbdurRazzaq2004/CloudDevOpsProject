@@ -5,7 +5,7 @@ A comprehensive end-to-end CI/CD infrastructure for containerized applications. 
 ---
 ## Project Architecture 
 
-![Architecture](https://github.com/user-attachments/assets/41b21894-f8c2-4ac9-8a57-2fc8349f59e1)
+![Architecture](https://github.com/user-attachments/assets/4881fd5d-7aa4-48e7-b55a-3f19b24b112d)
 
 ---
 ## 🏗️ Architecture Overview
