@@ -1,4 +1,4 @@
-# 🌐 iVolve CI/CD Infrastructure
+# 🌐 End-to-End GitOps CI/CD Pipeline on AWS
 
 A comprehensive end-to-end CI/CD infrastructure for containerized applications. This project leverages **Terraform** for AWS infrastructure provisioning, **Ansible** for automated configuration management, **Jenkins** for continuous integration, and **ArgoCD** for GitOps-based deployment to **Kubernetes** clusters.
 
