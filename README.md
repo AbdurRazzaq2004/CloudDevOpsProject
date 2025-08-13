@@ -171,10 +171,19 @@ Includes:
 ---
 ## 👨‍💻 Author
 
-**Sherif Shaban**  
-Cloud DevOps Engineer  
+**Abdur Razzaq**  
+AWS DevOps Engineer
 
 ## 📬 Contact
 
-- [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/sherif127)  
-- 📧 sherifshabanpp00@gmail.com
+- [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/abdurrazzaq04/)  
+- 📧 abdurrazzaqkhan2004@gmail.com
+
+## 👨‍💻 Thanks To 
+
+**Sherif Shaban**  
+Cloud DevOps Engineer  
+
+
+
+
